@@ -2,7 +2,7 @@ import { of } from "rxjs";
 
 
 /**
- * of - crea observables en base a un listado de elementos
+ * of - crea una secuencia de observables en base a un listado de elementos
  */
 const obsOf$ = of<any>([1, 2], { a: 3, b: 4 }, function () { }, true, Promise.resolve(true));
 
