@@ -3,6 +3,7 @@ import { Observable, Observer } from "rxjs";
 
 
 // const obs$ = Observable.create(); 
+// el observable no hace nada por sí mismo, solo guarda la lógica
 const obs$ = new Observable<string>(subs => {
 
     subs.next('Patata');
@@ -17,6 +18,7 @@ const obs$ = new Observable<string>(subs => {
 });
 
 // obs$.subscribe(resp => console.log(resp));
+// la lógica del observable se ejecuta con la suscripción
 obs$.subscribe(console.log);
 
 

@@ -53,6 +53,7 @@ const intervalo2$ = new Observable<number>(subscriber => {
         subscriber.complete();
     }, 3000);
 
+    // teardown, se ejecuta tras complete o error
     return () => {
         clearInterval(interval);
         console.log('Intervalo destruido');
