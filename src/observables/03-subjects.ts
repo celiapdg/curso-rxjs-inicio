@@ -21,15 +21,16 @@ const intervalo$ = new Observable<number>(subs => {
 
 /**
  *  1- Casteo múltiple. Muchas suscripciones van a estar sujetas a este mismo observable, y va a servirme para distribuir la misma información a todos los lugares suscritos
- *  2- También es un observer. Maneja next, error y complete.
+ *  2- Es observable y observer a la vez. Al ser observable podemos 
+ * suscribirnos a él. También es un observer: maneja next, error y complete.
  *  3- Le podemos mandar un subject, lo podemos mandar como argumento al subscribe. 
  */
 /**
- * Cuando la data es producida por el observable, es considerado un Col Observable
+ * Cuando la data es producida por el observable, es considerado un Cold Observable
  * Cuando la data es producida fuera, sería un Hot Observable
  * El subject nos permite tranformar Cold -> Hot
  */
-const subject$ = new Subject();
+const subject$ = new Subject<number>();
 const subscription = intervalo$.subscribe(subject$);
 
 // los números que generan ambas suscriptciones son los mismos
@@ -39,8 +40,8 @@ const subs2 = subject$.subscribe(observer);
 setTimeout(() => {
 
     subject$.next(10);
-    subject$.complete();
+    subject$.complete(); // se completan las dos, no se para el intervalo
 
-    subscription.unsubscribe();
+    subscription.unsubscribe(); // se para el intervalo, no se ejecuta el complete
 
 }, 3500);
