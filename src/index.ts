@@ -1,13 +1,16 @@
-import { of, take } from "rxjs";
+import { fromEvent, map, takeWhile, tap } from "rxjs";
 
 
 /**
- * take - toma un número de valores y cancela la emisión (completa)
+ * takeWhile - toma valores hasta que se cumpla
+ * una condicion y cancela la emisión (completa)
+ * con el parámetro inclusive en true podemos añadir el valor que incumple
  */
-const numeros$ = of(1, 2, 3, 4, 5);
+const click$ = fromEvent<MouseEvent>(document, 'click');
 
-numeros$.pipe(
-    take(3)
+click$.pipe(
+    map(({ x, y }) => ({ x, y })),
+    takeWhile(({ y }) => y <= 300, true)
 ).subscribe({
     next: val => console.log('next:', val),
     complete: () => console.log('Complete'),
