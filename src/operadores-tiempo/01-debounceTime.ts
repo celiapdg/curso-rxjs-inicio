@@ -3,7 +3,8 @@ import { debounceTime, distinctUntilChanged, fromEvent, map } from "rxjs";
 
 /**
  * debounceTime - emite un valor después de que pase el tiempo indicado
- * desde la última emisión, y solo se emite el último
+ * desde la última emisión, y solo se emite el último. Si antes de que
+ * pase este tiempo se emite otro valor, el tiempo se resetea
  */
 const click$ = fromEvent<MouseEvent>(document, 'click');
 
