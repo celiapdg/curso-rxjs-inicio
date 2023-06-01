@@ -3,7 +3,7 @@ import { throttleTime, distinctUntilChanged, fromEvent, map, asyncScheduler } fr
 
 /**
  * throttleTime - cada vez que se emite un valor, cuenta el tiempo
- * indicado e indica todo lo que se emita después, hasta que pase
+ * indicado e ignora todo lo que se emita después, hasta que pase
  * ese tiempo. Después, se podrá repetir el proceso
  */
 

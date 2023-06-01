@@ -1,8 +1,9 @@
-import { sampleTime, distinctUntilChanged, fromEvent, map, asyncScheduler } from "rxjs";
+import { sampleTime, distinctUntilChanged, fromEvent, map } from "rxjs";
 
 
 /**
  * sampleTime - obtenemos el último valor emitido en un intervalo de tiempo
+ * el tiempo está contando constantemente, independientemente de las emisiones
  */
 
 const click$ = fromEvent<MouseEvent>(document, 'click');
